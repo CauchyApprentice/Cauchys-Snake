@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbopdiri6iqpp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xff5t"]
+size = Vector2(1000, 1000)
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="background" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_xff5t")
