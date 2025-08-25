@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbopdiri6iqpp"]
+[gd_scene load_steps=6 format=3 uid="uid://bbopdiri6iqpp"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_7m1hl"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_7m1hl"]
 [ext_resource type="PackedScene" uid="uid://cx86aroda5qao" path="res://Scenes/SnakePart.tscn" id="1_awydk"]
 [ext_resource type="Script" path="res://Scripts/SnakeHead.gd" id="3_uvf7j"]
+[ext_resource type="PackedScene" uid="uid://bemcdxetbw53h" path="res://Scenes/food.tscn" id="4_pp3r3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_xff5t"]
 size = Vector2(1000, 1000)
@@ -18,5 +19,9 @@ mesh = SubResource("QuadMesh_xff5t")
 
 [node name="SnakeHead" parent="." instance=ExtResource("1_awydk")]
 scale = Vector2(3.705, 3.705)
-motion_mode = 1
+collision_mask = 1
 script = ExtResource("3_uvf7j")
+
+[node name="Food" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(188, -208)
+scale = Vector2(3.04, 3.04)

@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
-var speed: float = 5
+var speed: float = 3
 var init_vel = Vector2.RIGHT * speed #vel == velocity
-var ang_speed: float = deg_to_rad(135)
+var ang_speed: float = deg_to_rad(135) #turning speed
+
+func add_snake_body():
+	var snake_part_scene = preload("res://Scenes/SnakePart.tscn")
+	var new_body = snake_part_scene.instantiate()
+	get_parent().add_child(new_body)
 
 
 func adjust_direction(_delta) -> void:
@@ -25,10 +30,14 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func _physics_process(delta: float) -> void:
 	adjust_direction(delta)
-	move_and_collide(velocity)
+	var collision = move_and_collide(velocity)
+	if collision: #food was found
+		collision.get_collider().queue_free()
+		add_snake_body()
+		
