@@ -17,4 +17,6 @@ modulate = Color(0, 1, 0, 1)
 mesh = SubResource("QuadMesh_xff5t")
 
 [node name="SnakeHead" parent="." instance=ExtResource("1_awydk")]
+scale = Vector2(3.705, 3.705)
+motion_mode = 1
 script = ExtResource("3_uvf7j")
