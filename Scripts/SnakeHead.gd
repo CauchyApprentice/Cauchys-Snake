@@ -3,6 +3,7 @@ extends CharacterBody2D
 var speed: float = 3
 var init_vel = Vector2.RIGHT * speed #vel == velocity
 var ang_speed: float = deg_to_rad(135) #turning speed
+signal food_eaten
 
 func add_snake_body():
 	var snake_part_scene = preload("res://Scenes/SnakePart.tscn")
