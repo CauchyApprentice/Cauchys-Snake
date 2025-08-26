@@ -44,7 +44,19 @@ func _physics_process(delta: float) -> void:
 		if collider.is_in_group("foods"):
 			collider.queue_free() #removes food
 			food_eaten.emit()
-		#elif collider.is_in_group("walls"):
-		#	velocity = velocity.slide(collision.get_normal())
-
+		elif collider.is_in_group("walls"):
+			var normal_vec: Vector2 = collision.get_normal() #the minus is there so that the vector points the same way as the velocity vector
+			var normal_transform: Transform2D = Transform2D()
+			normal_transform.x = normal_vec
+			print("Velocity Vector Init: "+"("+str(round(velocity.x))+", "+str(round(velocity.y))+")")
+			print("Normal Vector: "+"("+str(round(normal_vec.x))+", "+str(round(normal_vec.y))+")")
+			normal_transform.y = normal_vec.orthogonal()
+			var velocity_in_normal: Vector2 = normal_transform.basis_xform(velocity)
+			print("Velocity_in_Normal Vector: "+"("+str(round(velocity_in_normal.x))+", "+str(round(velocity_in_normal.y))+")")
+			velocity_in_normal.y = 0
+			
+			velocity = normal_transform.basis_xform_inv(velocity_in_normal)
+			print("Velocity Vector Back: "+"("+str(round(velocity.x))+", "+str(round(velocity.y))+")")
+			velocity = speed * velocity.normalized()
+			print(velocity.dot(normal_vec))
 		
