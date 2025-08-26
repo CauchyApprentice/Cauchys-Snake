@@ -4,11 +4,9 @@ var speed: float = 3
 var init_vel = Vector2.RIGHT * speed #vel == velocity
 var ang_speed: float = deg_to_rad(135) #turning speed
 signal food_eaten
+signal has_moved(new_position)
 
-func add_snake_body():
-	var snake_part_scene = preload("res://Scenes/SnakePart.tscn")
-	var new_body = snake_part_scene.instantiate()
-	get_parent().add_child(new_body)
+
 
 
 func adjust_direction(_delta) -> void:
@@ -37,6 +35,8 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	adjust_direction(delta)
+	has_moved.emit(position)
+	
 	var collision = move_and_collide(velocity)
 	if collision: #food was found
 		collision.get_collider().queue_free() #removes food

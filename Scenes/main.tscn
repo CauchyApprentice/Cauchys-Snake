@@ -18,10 +18,40 @@ modulate = Color(0, 1, 0, 1)
 mesh = SubResource("QuadMesh_xff5t")
 
 [node name="SnakeHead" parent="." instance=ExtResource("1_awydk")]
-scale = Vector2(3.705, 3.705)
 collision_mask = 1
 script = ExtResource("3_uvf7j")
 
 [node name="Food" parent="." instance=ExtResource("4_pp3r3")]
-position = Vector2(188, -208)
+position = Vector2(208, -152)
 scale = Vector2(3.04, 3.04)
+
+[node name="Food2" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(-148, -221)
+scale = Vector2(3.04, 3.04)
+
+[node name="Food3" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(-253, -123)
+scale = Vector2(3.04, 3.04)
+
+[node name="Food4" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(118, 208)
+scale = Vector2(3.04, 3.04)
+
+[node name="Food5" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(319, 236)
+scale = Vector2(3.04, 3.04)
+
+[node name="Food6" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(361, -351)
+scale = Vector2(3.04, 3.04)
+
+[node name="Food7" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(47, -408)
+scale = Vector2(3.04, 3.04)
+
+[node name="Food8" parent="." instance=ExtResource("4_pp3r3")]
+position = Vector2(-185, -340)
+scale = Vector2(3.04, 3.04)
+
+[connection signal="food_eaten" from="SnakeHead" to="." method="_on_snake_head_food_eaten"]
+[connection signal="has_moved" from="SnakeHead" to="." method="_on_snake_head_has_moved"]
