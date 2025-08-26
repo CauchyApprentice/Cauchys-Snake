@@ -7,8 +7,9 @@ height = 10.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6bi2i"]
 radius = 2.0
 
-[node name="Food" type="StaticBody2D"]
+[node name="Food" type="StaticBody2D" groups=["foods"]]
 modulate = Color(0.994282, 0.377831, 0.571317, 1)
+scale = Vector2(3, 3)
 collision_mask = 2
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]

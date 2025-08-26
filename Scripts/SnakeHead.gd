@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var speed: float = 3
+var speed: float = 4
 var init_vel = Vector2.RIGHT * speed #vel == velocity
-var ang_speed: float = deg_to_rad(135) #turning speed
+var ang_speed: float = deg_to_rad(270) #turning speed
 signal food_eaten
 signal has_moved(new_position)
 
@@ -39,7 +39,12 @@ func _physics_process(delta: float) -> void:
 	
 	var collision = move_and_collide(velocity)
 	if collision: #food was found
-		collision.get_collider().queue_free() #removes food
-		food_eaten.emit()
+		var collider = collision.get_collider()
+		
+		if collider.is_in_group("foods"):
+			collider.queue_free() #removes food
+			food_eaten.emit()
+		#elif collider.is_in_group("walls"):
+		#	velocity = velocity.slide(collision.get_normal())
 
 		
