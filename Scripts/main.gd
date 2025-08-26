@@ -3,8 +3,8 @@ extends Node2D
 var head_positions: Array[Vector2] = []
 var snake_size: int = 1
 var snake_parts: Array[CharacterBody2D] = []
-var index_scale: int = 10 #how much distance is between the snake parts in terms of head positions index
-var nourish: int = 2 #how many body parts are added when eating
+var index_scale: int = 3 #how much distance is between the snake parts in terms of head positions index
+var nourish: int = 3 #how many body parts are added when eating
 
 
 
@@ -40,7 +40,6 @@ func new_food_pos() -> Vector2:
 		food_pos = new_pos.call()
 		query.position = food_pos
 		intersect = space_state.intersect_point(query, 1)
-		print("Looking for position... Limit: "+str(limit))
 		
 		if limit == 0:
 			push_error("Found no valid food position.")
