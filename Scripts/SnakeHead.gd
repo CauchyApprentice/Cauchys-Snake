@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	adjust_direction(delta)
 	var collision = move_and_collide(velocity)
 	if collision: #food was found
-		collision.get_collider().queue_free()
-		add_snake_body()
+		collision.get_collider().queue_free() #removes food
+		food_eaten.emit()
+
 		
