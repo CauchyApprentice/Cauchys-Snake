@@ -5,6 +5,7 @@ var init_vel = Vector2.RIGHT * speed #vel == velocity
 var ang_speed: float = deg_to_rad(270) #turning speed
 signal food_eaten
 signal has_moved(new_position)
+signal has_died
 
 
 
@@ -45,5 +46,5 @@ func _physics_process(delta: float
 		if collider.is_in_group("foods"):
 			collider.queue_free() #removes food
 			food_eaten.emit()
-		
-		
+		elif collider.is_in_group("snake"):
+			has_died.emit()

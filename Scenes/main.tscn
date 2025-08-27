@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbopdiri6iqpp"]
+[gd_scene load_steps=8 format=3 uid="uid://bbopdiri6iqpp"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7m1hl"]
 [ext_resource type="PackedScene" uid="uid://cx86aroda5qao" path="res://Scenes/SnakePart.tscn" id="1_awydk"]
 [ext_resource type="Script" path="res://Scripts/SnakeHead.gd" id="3_uvf7j"]
 [ext_resource type="PackedScene" uid="uid://cd66lovix41ku" path="res://wall.tscn" id="4_hpfps"]
+[ext_resource type="Script" path="res://Scenes/score_label.gd" id="5_3jyke"]
+[ext_resource type="Script" path="res://Scenes/lost_label.gd" id="6_rac1g"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_xff5t"]
 size = Vector2(1000, 1000)
@@ -18,24 +20,32 @@ modulate = Color(0, 1, 0, 1)
 mesh = SubResource("QuadMesh_xff5t")
 
 [node name="SnakeHead" parent="." instance=ExtResource("1_awydk")]
-collision_mask = 1
+collision_mask = 7
 script = ExtResource("3_uvf7j")
 
 [node name="wall_left" parent="." instance=ExtResource("4_hpfps")]
 position = Vector2(-533.945, 0)
 scale = Vector2(1.32, 20.6851)
+collision_layer = 4
+collision_mask = 2
 
 [node name="wall_right" parent="." instance=ExtResource("4_hpfps")]
 position = Vector2(534.04, 0)
 scale = Vector2(1.32, 20.6851)
+collision_layer = 4
+collision_mask = 2
 
 [node name="wall_up" parent="." instance=ExtResource("4_hpfps")]
 position = Vector2(0, -525.435)
 scale = Vector2(20.34, 1)
+collision_layer = 4
+collision_mask = 2
 
 [node name="wall_down" parent="." instance=ExtResource("4_hpfps")]
 position = Vector2(0, 526)
 scale = Vector2(20.34, 1)
+collision_layer = 4
+collision_mask = 2
 
 [node name="scoreLabel" type="Label" parent="."]
 offset_left = -490.0
@@ -47,6 +57,22 @@ theme_override_colors/font_color = Color(0.305882, 0.184314, 0.054902, 1)
 theme_override_colors/font_shadow_color = Color(0.67451, 1, 0, 0.647059)
 theme_override_font_sizes/font_size = 451
 text = "0"
+script = ExtResource("5_3jyke")
+
+[node name="lostLabel" type="Label" parent="."]
+visible = false
+offset_left = -180.0
+offset_top = -118.0
+offset_right = 1213.0
+offset_bottom = 787.355
+scale = Vector2(0.26, 0.26)
+theme_override_font_sizes/font_size = 321
+text = "You lost!
+Score: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_rac1g")
 
 [connection signal="food_eaten" from="SnakeHead" to="." method="_on_snake_head_food_eaten"]
+[connection signal="has_died" from="SnakeHead" to="." method="_on_snake_head_has_died"]
 [connection signal="has_moved" from="SnakeHead" to="." method="_on_snake_head_has_moved"]

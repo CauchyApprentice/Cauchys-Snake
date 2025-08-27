@@ -29,6 +29,7 @@ walls=""
 
 2d_physics/layer_1="food"
 2d_physics/layer_2="snake"
+2d_physics/layer_3="wall"
 
 [rendering]
 

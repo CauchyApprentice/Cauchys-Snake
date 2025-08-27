@@ -71,3 +71,10 @@ func _on_snake_head_food_eaten() -> void:
 	score += 1
 	for k in range(nourish):
 		add_snake_body()
+
+
+func _on_snake_head_has_died() -> void:
+	$scoreLabel.visible = false
+	$lostLabel.score = score
+	$lostLabel.visible = true
+	get_tree().paused = true
