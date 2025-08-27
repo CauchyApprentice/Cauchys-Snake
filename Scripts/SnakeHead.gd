@@ -46,3 +46,4 @@ func _physics_process(delta: float
 			collider.queue_free() #removes food
 			food_eaten.emit()
 		
+		
