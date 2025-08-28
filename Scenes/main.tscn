@@ -16,7 +16,7 @@ script = ExtResource("1_7m1hl")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="background" type="MeshInstance2D" parent="."]
-modulate = Color(0, 1, 0, 1)
+modulate = Color(8.90419e-07, 0.587142, 1.15514e-06, 1)
 mesh = SubResource("QuadMesh_xff5t")
 
 [node name="SnakeHead" parent="." instance=ExtResource("1_awydk")]
@@ -60,6 +60,7 @@ text = "0"
 script = ExtResource("5_3jyke")
 
 [node name="lostLabel" type="Label" parent="."]
+process_mode = 2
 visible = false
 offset_left = -180.0
 offset_top = -118.0

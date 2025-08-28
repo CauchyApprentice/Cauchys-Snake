@@ -5,7 +5,7 @@ var snake_size: int = 1
 var snake_parts: Array[CharacterBody2D] = []
 var index_scale: int = 3 #how much distance is between the snake parts in terms of head positions index
 var nourish: int = 3 #how many body parts are added when eating
-var score: int = 1
+var score: int = 0
 
 
 
@@ -54,7 +54,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	$scoreLabel.text = str("Score: "+str(score))
+	$scoreLabel.score = score
 
 
 func _on_snake_head_has_moved(new_position: Variant) -> void:
